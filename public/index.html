@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Weeee</title>
+  <link rel="stylesheet" href="/public/style.css" type="text/css"/>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="javascript/jquery.ws-0.3pre.js"></script>
+  <script type="text/javascript">
+    var ws, gad
+    $(document).ready(function () {
+      ws = $.ws.conn({
+        url : 'ws://localhost:3840/connect?to=master&id=client',
+        onopen : function () {
+          console.log('connected');
+        },
+        onmessage : function (data) {
+          console.log('received:')
+          console.log(data)
+        },
+        onclose : function (event) {
+          console.log('disconnected');
+        }
+      });
+      ws.close()
+    });
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
