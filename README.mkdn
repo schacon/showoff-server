@@ -1,0 +1,58 @@
+# ShowOff Server
+
+Allows a presenter to control slide advancement to users viewing the same presentation.
+
+## Quick Screencast
+
+http://screenr.com/Y4M
+
+## Testing
+
+First, get my showoff fork:
+
+    git clone git://github.com/technoweenie/showoff.git
+    cd showoff
+    git checkout -t origin/ws
+
+Run showoff on a presentation (use git://github.com/technoweenie/pdxjs-twitter-node.git if you don't have one):
+
+    cd my-showoff-pres
+    /path/to/showoff/bin/showoff serve
+
+Next, run the server (tested with node v0.1.33).
+
+    git clone git://github.com/technoweenie/showoff-server.git
+    cd showoff-server
+    node server.js
+
+Open up Google Chrome, and create a separate incognito window.  In browser A, the normal window, visit the presentation at http://localhost:9090.  This will be the master.  In browser B, the incognito window, visit the presentation.
+
+Advancing the slides on the master should advance them on the client.
+
+An incognito Chrome window is used because Showoff stores the browser's UUID in a cookie.
+
+You can introspect the node server's currently running presentations by looking at the tracker object:
+
+    $ node server.js    
+    > connected: 'MASTER'
+    > connected: 'CLIENT_1'
+    > tracker.presentations
+    { abc: 
+       { id: 'abc'
+       , master: 'MASTER'
+       , clients: [ 'CLIENT_1' ]
+       , slide: 0
+       }
+    }
+
+## Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Commit, do not mess with version or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+## Copyright
+
+Copyright (c) 2010 rick. See LICENSE for details.
