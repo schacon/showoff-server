@@ -23,6 +23,12 @@ Run showoff on a presentation (use git://github.com/technoweenie/pdxjs-twitter-n
 
 Next, run the server (tested with node v0.1.33).
 
+    # first, we need ncr/node.ws.js for the web socket server stuff
+    git clone git://github.com/ncr/node.ws.js.git
+    # symlink ws.js to your node load path
+    ln -s /path/to/node.ws.js/ws.js ~/.node_libraries
+
+    # ok, get showoff-server
     git clone git://github.com/technoweenie/showoff-server.git
     cd showoff-server
     node server.js
