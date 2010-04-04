@@ -4,17 +4,18 @@ var sys = require('sys'),
 
 var tracker = tr.create()
 var server  = ws.createServer(function (socket) {
-  var record
+  var client
   socket.addListener("connect", function (res) {
-    record = tracker.connect(socket, res)
-    sys.puts('connected: ' + socketId)
+    client = tracker.connect(socket, res)
+    sys.puts('connected: ' + client.id)
   })
   socket.addListener("data", function (data) {
-    sys.puts('> ' + sys.inspect(data))
+    if(data == 'Heartbeat') return;
+    tracker.sendToClients(client, data)
   })
   socket.addListener("close", function () {
-    sys.puts('disconnected: ' + record.id)
-    tracker.disconnect(record)
+    sys.puts('disconnected: ' + client.id)
+    tracker.disconnect(client)
   })
 })
 server.listen(3840)
