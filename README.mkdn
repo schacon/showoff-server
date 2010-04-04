@@ -2,9 +2,11 @@
 
 Allows a presenter to control slide advancement to users viewing the same presentation.
 
+See my showoff fork: [http://github.com/technoweenie/showoff/tree/ws](http://github.com/technoweenie/showoff/tree/ws)
+
 ## Quick Screencast
 
-http://screenr.com/Y4M
+[http://screenr.com/Y4M](http://screenr.com/Y4M)
 
 ## Testing
 
